@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:?Set OPENAI_API_KEY in your .env or shell}
+    ports:
+      - "8000:80"
+    volumes:
+      - ./app:/norm-fullstack/app:ro
+      - ./docs:/norm-fullstack/docs:ro
